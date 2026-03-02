@@ -1,0 +1,17 @@
+{
+  "name": "scam-spotter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Analyze suspicious text messages for scam indicators and protect yourself from phishing",
+  "scripts": {
+    "dev": "concurrently -n server,client -c blue,green \"npm run server\" \"npm run client\"",
+    "server": "npm run dev --prefix server",
+    "client": "npm run dev --prefix client",
+    "build": "npm run build --prefix client",
+    "start": "npm start --prefix server",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}

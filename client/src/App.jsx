@@ -1,0 +1,67 @@
+import { useState } from 'react';
+import Header from './components/Header';
+import MessageInput from './components/MessageInput';
+import ResultsPanel from './components/ResultsPanel';
+import Footer from './components/Footer';
+
+function App() {
+  const [results, setResults] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleAnalyze = async (message) => {
+    if (!message.trim()) return;
+
+    setIsLoading(true);
+    setError(null);
+    setResults(null);
+
+    try {
+      const response = await fetch('/api/analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: message.trim() }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.error || `Analysis failed (${response.status})`);
+      }
+
+      const data = await response.json();
+      setResults(data);
+    } catch (err) {
+      setError(err.message || 'Failed to analyze message. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleClear = () => {
+    setResults(null);
+    setError(null);
+  };
+
+  return (
+    <div className="app">
+      <Header />
+      <main className="main-content">
+        <div className="analysis-container">
+          <MessageInput
+            onAnalyze={handleAnalyze}
+            onClear={handleClear}
+            isLoading={isLoading}
+          />
+          <ResultsPanel
+            results={results}
+            isLoading={isLoading}
+            error={error}
+          />
+        </div>
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
+export default App;
