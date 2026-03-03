@@ -45,7 +45,7 @@ function RiskMeter({ score, riskLevel }) {
 
   return (
     <div className="risk-meter">
-      <svg className="risk-meter-svg" viewBox="0 0 200 120">
+      <svg className="risk-meter-svg" viewBox="0 0 200 170">
         <path
           d={bgArc}
           className="risk-meter-bg"
@@ -56,19 +56,24 @@ function RiskMeter({ score, riskLevel }) {
           stroke={color}
           strokeDasharray={`${fillLength} ${arcLength}`}
         />
+
+
         <text
           x="100"
-          y="92"
+          y="125"
           textAnchor="middle"
+          dominantBaseline="middle"
           className="risk-meter-score"
-          fontSize="38"
+          fontSize="34"
           fill={color}
         >
           {animatedNumber}%
         </text>
+
+
         <text
           x="100"
-          y="112"
+          y="160"
           textAnchor="middle"
           className="risk-meter-label"
           fontSize="13"
