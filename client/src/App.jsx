@@ -3,13 +3,14 @@ import Header from './components/Header';
 import MessageInput from './components/MessageInput';
 import ResultsPanel from './components/ResultsPanel';
 import Footer from './components/Footer';
-import About from '.components/About'
+import About from './components/About';
 import FAQ from './components/FAQ';
 
 function App() {
   const [results, setResults] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState('home');
 
   const handleAnalyze = async (message) => {
     if (!message.trim()) return;
@@ -46,9 +47,10 @@ function App() {
 
   return (
     <div className="app">
-      <Header />
+      <Header onNavigate={setCurrentPage} currentPage={currentPage} />
       <main className="main-content">
-        <div className="analysis-container">
+        {currentPage === 'home' && (
+         <div className="analysis-container">
           <MessageInput
             onAnalyze={handleAnalyze}
             onClear={handleClear}
@@ -59,7 +61,10 @@ function App() {
             isLoading={isLoading}
             error={error}
           />
-        </div>
+        </div> 
+        )}
+        {currentPage === 'about' && <About />}
+        {currentPage === 'faq' && <FAQ />}
       </main>
       <Footer />
     </div>
