@@ -3,6 +3,8 @@ import Header from './components/Header';
 import MessageInput from './components/MessageInput';
 import ResultsPanel from './components/ResultsPanel';
 import Footer from './components/Footer';
+import About from '.components/About'
+import FAQ from './components/FAQ';
 
 function App() {
   const [results, setResults] = useState(null);
