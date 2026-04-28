@@ -24,7 +24,7 @@ function About({onNavigate}) {
             </p>
             <br></br>
             <p>
-                We hope that in using this tool, users are able to make educated and informed
+                We hope that in using this tool, you are able to make educated and informed
                 choices in managing potentially harmful messages.
             </p>
             <br></br>
