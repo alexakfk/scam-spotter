@@ -69,6 +69,12 @@ body {
   min-height: 100vh;
 }
 
+.page-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
 /* ─── HEADER ──────────────────────────────────────────────────── */
 
 .header {
@@ -104,7 +110,7 @@ body {
 }
 
 .header h1 {
-  font-size: 1.75rem;
+  font-size: 2rem;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -128,7 +134,7 @@ body {
 
 .header-nav {
   display: flex;
-  gap: 2.0rem;
+  gap: 1.5rem;
   justify-content: flex-end;
 }
 
@@ -139,7 +145,7 @@ body {
   padding: 0.35rem 0.9rem;
   border-radius: var(--radius-full);
   cursor: pointer;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   font-family: var(--font-sans);
   font-weight: 500;
   transition: all var(--transition-fast);
@@ -156,6 +162,29 @@ body {
   border-color: rgba(255, 255, 255, 0.6);
   color: #fff;
   font-weight: 600;
+}
+
+/* ─── BACK BUTTONS ────────────────────────────────────────────── */
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4 rem;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: background var(--transition-fast);
+}
+
+.back-button:hover {
+  background: var(--color-primary-dark);
 }
 
 /* ─── MAIN CONTENT ────────────────────────────────────────────── */

@@ -45,9 +45,17 @@ function App() {
     setError(null);
   };
 
+  const handleNavigate = (page) => {
+    setCurrentPage(page);
+    if (page == 'home') {
+      setResults(null);
+      setError(null);
+    }
+  }
+
   return (
     <div className="app">
-      <Header onNavigate={setCurrentPage} currentPage={currentPage} />
+      <Header onNavigate={handleNavigate} currentPage={currentPage} />
       <main className="main-content">
         {currentPage === 'home' && (
          <div className="analysis-container">
@@ -63,8 +71,8 @@ function App() {
           />
         </div> 
         )}
-        {currentPage === 'about' && <About />}
-        {currentPage === 'faq' && <FAQ />}
+        {currentPage === 'about' && <About onNavigate={setCurrentPage}/>}
+        {currentPage === 'faq' && <FAQ onNavigate={setCurrentPage}/>}
       </main>
       <Footer />
     </div>
